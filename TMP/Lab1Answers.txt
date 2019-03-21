@@ -1,0 +1,51 @@
+Q:->What are the advantages and disadvantages of each of the two scheduling policies? Also, give the advantages and disadvantages of the round_ robin scheduling policy originally implemented in Xinu.
+
+A: Exponential scheduler:
+Advantages:
+1. Since the process to be executed are choosen based on the random values that are generated, each process would be atleast executed.
+2. Probability of lower priority processes to be executed is more. In most of the other schedulers, the lower priority process generally    have to starve.
+
+
+Disadvantages:
+1. Since the random numbers generation tendency is more towards the lower value and lesser towards the higher value. The chances of higher priority processes to be scheduled becomes lesser. 
+2.The processes with very high priority may even starve.  
+
+
+Linux-like scheduler:
+
+Advantages:
+1.All the processes irrespective of their priorities would be scheduled to execute in a given epoch. And this resolves the starvation problem.
+  Although higher priorities (goodness value) processes would be scheduled first followed by lower priorities.
+
+2. If a process is not able to utilise its complete CPU time (due to sleep etc) in a given epoch. Its time would be added in the next epoch and thus its goodness value will increase and more preference would be given to it in its next epoch. 
+
+Disadvantage:
+
+1. The processes created during a current on-going epoch, have to wait till next epoch to get scheduled.
+2. Even if the process created have very high priority, then also it has to wait until all the processes in the current on-going epoche used up their time quantum.
+
+XINU:
+
+Advantages:
+1.Higher priority processes are scheduled first.
+2. Ready list is well organised on the basis of priorities of processes and, process at the end of the ready list (one before tail) is scheduled.
+
+
+Disadvantages:
+1. Lower priority processes have to wait till the execution of higher priority processes are over and thus it may lead to starvation.
+
+
+
+
+Q->2 Describe the way each of the schedulers affects the NULL process.
+
+
+Exponential scheduler:
+If there is no process in the ready list, then the null process is scheduled.
+
+Linux Like:
+If all the proccesses have a goodness value of 0. That means all the processes have used up their time quantum. In that case NULL process is scheduled.
+
+
+Xinu:
+If there is no process in the ready list, then it is scheduled.
