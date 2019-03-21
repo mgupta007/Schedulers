@@ -197,21 +197,6 @@ else if(scheduler == LINUXSCHED)
 else
 		return OK;
 }
-
-
-                                              
-                             
-                                               
-                                                 
-                      
-	
-	
-
-
-
-
-                                
-                                                
                                
 else
 {
