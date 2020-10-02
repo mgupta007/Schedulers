@@ -1,4 +1,4 @@
-/* comiin.c comiin */
+sasa/* comiin.c comiin */
 
 #include <conf.h>
 #include <kernel.h>
